@@ -169,7 +169,7 @@
 /**
  * @swagger
  * /users/logout:
- *   get:
+ *   post:
  *     security:
  *      - bearerAuth: []
  *     summary: Log out the user

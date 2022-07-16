@@ -15,7 +15,7 @@ router.post("/login", validation(joiLogInSchema), ctrlWrapper(ctrl.logIn));
 
 router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
 
-router.get("/logout", auth, ctrlWrapper(ctrl.logOut));
+router.post("/logout", auth, ctrlWrapper(ctrl.logOut));
 
 router.patch(
 	"/avatars",

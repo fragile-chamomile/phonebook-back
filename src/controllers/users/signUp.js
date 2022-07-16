@@ -8,16 +8,17 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const { User } = require("../../models/user");
 
 const signUp = async (req, res) => {
-	const { email, password } = req.body;
+	const { name, email, password } = req.body;
 	const result = await User.findOne({ email });
 	if (result) {
-		throw new Conflict(`User with this email=${email} already registered`);
+		throw new Conflict(`User with this email ${email} already registered`);
 	}
 	const verificationToken = v4();
 	const avatarURL = gravatar.url(email);
 	const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
 	await User.create({
+		name,
 		email,
 		password: hashPassword,
 		avatarURL,
@@ -47,6 +48,7 @@ const signUp = async (req, res) => {
 		message: "Registration successful",
 		data: {
 			user: {
+				name,
 				email,
 				avatarURL,
 				verificationToken,

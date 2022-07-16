@@ -6,6 +6,10 @@ const emailCheck =
 
 const userSchema = Schema(
 	{
+		name: {
+			type: String,
+			required: [true, "Set name for contact"],
+		},
 		email: {
 			type: String,
 			required: [true, "Email is required"],
@@ -40,6 +44,7 @@ const userSchema = Schema(
 const User = model("user", userSchema);
 
 const joiSignUpSchema = Joi.object({
+	name: Joi.string().min(3).max(30).required(),
 	password: Joi.string().min(6).required(),
 	email: Joi.string()
 		.email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "ua"] } })
