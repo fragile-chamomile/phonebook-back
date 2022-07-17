@@ -12,7 +12,7 @@ const verifyEmail = async (req, res) => {
 		verificationToken: null,
 	});
 
-	res.redirect("https://phonebook-base.herokuapp.com/api-docs/#/");
+	res.redirect("https://chamomile-phonebook.netlify.app/login");
 };
 
 module.exports = verifyEmail;
