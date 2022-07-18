@@ -26,6 +26,7 @@ const logIn = async (req, res) => {
 			token,
 			user: {
 				name: user.name,
+				avatarURL: user.avatarURL;
 			},
 		},
 	});
